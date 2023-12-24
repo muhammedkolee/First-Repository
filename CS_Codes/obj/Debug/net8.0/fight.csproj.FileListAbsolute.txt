@@ -1,0 +1,14 @@
+C:\Users\Muhammed\Desktop\Simple Codes\C# Codes\fight\bin\Debug\net8.0\fight.exe
+C:\Users\Muhammed\Desktop\Simple Codes\C# Codes\fight\bin\Debug\net8.0\fight.deps.json
+C:\Users\Muhammed\Desktop\Simple Codes\C# Codes\fight\bin\Debug\net8.0\fight.runtimeconfig.json
+C:\Users\Muhammed\Desktop\Simple Codes\C# Codes\fight\bin\Debug\net8.0\fight.dll
+C:\Users\Muhammed\Desktop\Simple Codes\C# Codes\fight\bin\Debug\net8.0\fight.pdb
+C:\Users\Muhammed\Desktop\Simple Codes\C# Codes\fight\obj\Debug\net8.0\fight.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Muhammed\Desktop\Simple Codes\C# Codes\fight\obj\Debug\net8.0\fight.AssemblyInfoInputs.cache
+C:\Users\Muhammed\Desktop\Simple Codes\C# Codes\fight\obj\Debug\net8.0\fight.AssemblyInfo.cs
+C:\Users\Muhammed\Desktop\Simple Codes\C# Codes\fight\obj\Debug\net8.0\fight.csproj.CoreCompileInputs.cache
+C:\Users\Muhammed\Desktop\Simple Codes\C# Codes\fight\obj\Debug\net8.0\fight.dll
+C:\Users\Muhammed\Desktop\Simple Codes\C# Codes\fight\obj\Debug\net8.0\refint\fight.dll
+C:\Users\Muhammed\Desktop\Simple Codes\C# Codes\fight\obj\Debug\net8.0\fight.pdb
+C:\Users\Muhammed\Desktop\Simple Codes\C# Codes\fight\obj\Debug\net8.0\fight.genruntimeconfig.cache
+C:\Users\Muhammed\Desktop\Simple Codes\C# Codes\fight\obj\Debug\net8.0\ref\fight.dll
