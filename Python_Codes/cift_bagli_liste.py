@@ -276,7 +276,4 @@ buton7 = Button(tk, text="Listeyi Göster", font="Verdana 12 bold",
                 activeforeground="white",
                 command=lambda: liste.Yazdir()).place(width=150, height=60, x=450, y=180)
 
-lbl = Label(tk)
-lbl.place(x=130, y=300)
-
 tk.mainloop()
