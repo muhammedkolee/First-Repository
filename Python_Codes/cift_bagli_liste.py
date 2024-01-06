@@ -27,7 +27,7 @@ class BagliListe:
         return self.head is None
 
     def Boyut(self):
-        sayac = 0
+        sayac = 1
         bosluk = self.head
         
         while bosluk is not None:
@@ -36,41 +36,43 @@ class BagliListe:
             
         return sayac
 
-    def SonaEkle(self, data):
+    def SonaEkle(self, data):               
         if data == "":
-            messagebox.showerror("HATA", "Değer giriniz!")            
+            messagebox.showerror("HATA", "Değer giriniz!")
+            return
 
         bosluk2 = bosluk(data)
         if self.BosMu():
             self.head = bosluk2
             self.tail = bosluk2
-            count = liste.Boyut()
-            Label(text=count, font="Arial 11").place(width=11, x=610, y=260)
+            Label(text=liste.Boyut()-1, font="Arial 11").place(width=11, x=610, y=260)
+            self.Yazdir()
     
         else:
             self.tail.next = bosluk2
             bosluk2.prev = self.tail
             self.tail = bosluk2
-            count = liste.Boyut()
-            Label(text=count, font="Arial 11").place(width=11, x=610, y=260)
+            Label(text=liste.Boyut()-1, font="Arial 11").place(width=11, x=610, y=260)
+            self.Yazdir()
 
     def BasaEkle(self, data):
         if data == "":
             messagebox.showerror("HATA", "Değer giriniz!")
+            return
             
         bosluk2 = bosluk(data)
         if self.BosMu():
             self.head = bosluk2
             self.tail = bosluk2
-            count = liste.Boyut()
-            Label(text=count, font="Arial 11").place(width=11, x=610, y=260)
-    
+            Label(text=liste.Boyut()-1, font="Arial 11").place(width=11, x=610, y=260)
+            self.Yazdir()
+            
         else:
             bosluk2.next = self.head
             self.head.prev = bosluk2
             self.head = bosluk2
-            count = liste.Boyut()
-            Label(text=count, font="Arial 11").place(width=11, x=610, y=260)
+            Label(text=liste.Boyut()-1, font="Arial 11").place(width=11, x=610, y=260)
+            self.Yazdir()
 
     def ArayaEkle(self, data, indeks):
         if data == "":
@@ -81,7 +83,7 @@ class BagliListe:
             messagebox.showerror("HATA", "İndeks numarasi giriniz!")
             return   
         
-        if int(indeks) >= liste.Boyut():
+        if int(indeks) >= liste.Boyut()-1:
             messagebox.showerror("HATA", "Indeks numarasi gecersiz!")
             return
 
@@ -96,16 +98,16 @@ class BagliListe:
              bosluk2.prev = None
              self.head.prev = bosluk2
              self.head = bosluk2
-             count = liste.Boyut()
-             Label(text=count, font="Arial 11").place(width=11, x=610, y=260)
+             Label(text=liste.Boyut()-1, font="Arial 11").place(width=11, x=610, y=260)
+             self.Yazdir()
 
         elif indeks == self.Boyut():
              bosluk2.prev = self.tail
              bosluk2.next = None
              self.tail.next = bosluk2
              self.tail = bosluk2
-             count = liste.Boyut()
-             Label(text=count, font="Arial 11").place(width=11, x=610, y=260)
+             Label(text=liste.Boyut(), font="Arial 11").place(width=11, x=610, y=260)
+             self.Yazdir()
             
         else:           
              bosluk3 = self.head
@@ -116,48 +118,46 @@ class BagliListe:
              bosluk2.prev = bosluk3
              bosluk3.next.prev = bosluk2
              bosluk3.next = bosluk2
-             count = liste.Boyut()
-             Label(text=count, font="Arial 11").place(width=11, x=610, y=260)
+             Label(text=liste.Boyut()-1, font="Arial 11").place(width=11, x=610, y=260)
+             self.Yazdir()
 
     def AradanSil(self, indeks):
-        if indeks == "":
-            messagebox.showerror("HATA", "İndeks numarasi giriniz!")
-            return
-        
+        giris5 = Label(text=liste.Boyut(), font="Verdana 8 bold").place(width=80, x=10, y=30)
         if self.BosMu():
-            count = liste.Boyut()
-            Label(text=count, font="Arial 11").place(width=11, x=610, y=260)
+            messagebox.showerror("HATA", "Liste boş!")
             return
 
-        if indeks == 0:
+        if indeks == "0":
             self.BasiSil()
-            count = liste.Boyut()
-            Label(text=count, font="Arial 11").place(width=11, x=610, y=260)
+            self.Yazdir()
             return
-        
+
         if indeks == self.Boyut() - 1: 
-           self.SonuSil()
-           count = liste.Boyut()
-           Label(text=count, font="Arial 11").place(width=11, x=610, y=260)
-           return
-        
-        if int(indeks) >= liste.Boyut():
-            messagebox.showerror("HATA", "Indeks numarasi gecersiz!")
+            self.SonuSil()
+            self.Yazdir()
+            return
+
+        if int(indeks) < 0 or int(indeks) > self.Boyut() - 1:
+            messagebox.showerror("HATA", "İndeks numarasi gecersiz!")
             return
 
         bosluk3 = self.head
         for i in range(int(indeks) - 1):
-            bosluk3 = bosluk3.next                                                    
+            bosluk3 = bosluk3.next
 
         temp = bosluk3.next
-        bosluk3.next = temp.next
-        temp.next.prev = bosluk3
+        if temp.next is None:  
+            bosluk3.next = None
+        else:
+            bosluk3.next = temp.next
+            temp.next.prev = bosluk3
         temp = None
+        self.Yazdir()                              
         
     def BasiSil(self):
         if self.BosMu():
-            count = liste.Boyut()
-            Label(text=count, font="Arial 11").place(width=11, x=610, y=260)
+            Label(text=liste.Boyut()-1, font="Arial 11").place(width=11, x=610, y=260)
+            messagebox.showerror("HATA", "Liste Boş!")
             return
         
         temp = self.head
@@ -165,19 +165,19 @@ class BagliListe:
         
         if self.head is None:
             self.tail = None
-            count = liste.Boyut()
-            Label(text=count, font="Arial 11").place(width=11, x=610, y=260)
+            Label(text=liste.Boyut()-1, font="Arial 11").place(width=11, x=610, y=260)
+            self.Yazdir()
     
         else:
             self.head.prev = None
-            count = liste.Boyut()
-            Label(text=count, font="Arial 11").place(width=11, x=610, y=260)
-            return temp.data                         
+            Label(text=liste.Boyut()-1, font="Arial 11").place(width=11, x=610, y=260)
+            self.Yazdir()
+            return temp.data                       
 
     def SonuSil(self):
         if self.BosMu():
-            count = liste.Boyut()
-            Label(text=count, font="Arial 11").place(width=11, x=610, y=260)
+            Label(text=liste.Boyut()-1, font="Arial 11").place(width=11, x=610, y=260)
+            messagebox.showerror("HATA", "Liste Boş!")
             return
         
         temp = self.tail
@@ -185,14 +185,32 @@ class BagliListe:
         
         if self.tail is None:
             self.head = None
-            count = liste.Boyut()
-            Label(text=count, font="Arial 11").place(width=11, x=610, y=260)
+            Label(text=liste.Boyut()-1, font="Arial 11").place(width=11, x=610, y=260)
+            self.Yazdir()
             
         else:
             self.tail.next = None
-            count = liste.Boyut()
-            Label(text=count, font="Arial 11").place(width=11, x=610, y=260)
+            Label(text=liste.Boyut()-1, font="Arial 11").place(width=11, x=610, y=260)
+            self.Yazdir()
             return temp.data
+        
+    def TersCevir(self):
+        if self.BosMu():
+            messagebox.showerror("HATA", "Liste Boş!")
+            return
+
+        current = self.head
+        previous = None
+        while current is not None:
+            next = current.next
+            current.next = previous
+            current.prev = next
+            previous = current
+            current = next
+
+        self.head, self.tail = self.tail, self.head
+        liste.Yazdir()
+
 
     def Yazdir(self):
          bosluk = self.head
@@ -201,7 +219,7 @@ class BagliListe:
              messagebox.showerror("Hata", "Liste boş!")
          else:            
              box = Listbox(tk, font="Verdana 12 bold")
-             box.place(width=130, height=200, x=450, y=280)
+             box.place(width=140, height=200, x=450, y=280)
              i = 1
              bosluk = self.head
              while bosluk is not None: 
@@ -270,10 +288,17 @@ buton6 = Button(tk, text="Aradan Sil", font="Verdana 12 bold",
                 bg="red",
                 command=lambda: liste.AradanSil(entry2.get())).place(width=100, height=60, x=700, y=110)
 
+buton7 = Button(tk, text="Listeyi Ters Cevir", font="Verdana 12 bold",
+                padx=10, pady=0,
+                activebackground="green",
+                activeforeground="white",
+                command=lambda: liste.TersCevir()).place(width=160, height=60, x=810, y=110)
+
 buton7 = Button(tk, text="Listeyi Göster", font="Verdana 12 bold",
                 padx=10, pady=0,
                 activebackground="green",
                 activeforeground="white",
                 command=lambda: liste.Yazdir()).place(width=150, height=60, x=450, y=180)
+
 
 tk.mainloop()
