@@ -83,7 +83,7 @@ class BagliListe:
             messagebox.showerror("HATA", "İndeks numarasi giriniz!")
             return   
         
-        if int(indeks) >= liste.Boyut()-1:
+        if int(indeks) > liste.Boyut():
             messagebox.showerror("HATA", "Indeks numarasi gecersiz!")
             return
 
@@ -93,23 +93,18 @@ class BagliListe:
 
         bosluk2 = bosluk(data)
 
-        if indeks == 0:
-             bosluk2.next = self.head
-             bosluk2.prev = None
-             self.head.prev = bosluk2
-             self.head = bosluk2
+        if int(indeks) == 0:
+             self.BasaEkle(data)
              Label(text=liste.Boyut()-1, font="Arial 11").place(width=11, x=610, y=260)
              self.Yazdir()
+             return
 
-        elif indeks == self.Boyut():
-             bosluk2.prev = self.tail
-             bosluk2.next = None
-             self.tail.next = bosluk2
-             self.tail = bosluk2
-             Label(text=liste.Boyut(), font="Arial 11").place(width=11, x=610, y=260)
+        elif int(indeks) == self.Boyut()-1:
+             self.SonaEkle(data)
              self.Yazdir()
+             return
             
-        else:           
+        else:     
              bosluk3 = self.head
              for i in range(int(indeks) - 1):
                  bosluk3 = bosluk3.next                                                     
@@ -122,7 +117,6 @@ class BagliListe:
              self.Yazdir()
 
     def AradanSil(self, indeks):
-        giris5 = Label(text=liste.Boyut(), font="Verdana 8 bold").place(width=80, x=10, y=30)
         if self.BosMu():
             messagebox.showerror("HATA", "Liste boş!")
             return

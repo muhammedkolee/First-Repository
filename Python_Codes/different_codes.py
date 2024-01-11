@@ -192,3 +192,38 @@ def transpose(lst):
                 lst[i][j], lst[j][i] = lst[j][i], lst[i][j]        
         return lst
     
+def adversarial_color(a_string):
+    return a_string.replace("red", "green").replace("blue", "green")
+
+def remove(s, i):
+    arr = list(s)
+    del arr[i]
+    return "".join(arr)
+
+def fibo(i):
+    if i == 0:
+        return 0
+    if i == 1 or i == 2:
+        return 1
+    if i > 2:
+        return fibo(i-1) + fibo(i-2)
+    
+def isPrime(num):
+    for i in range(2, num-1):
+        if num % i == 0:
+            return False       
+    return True
+        
+def fact(num):
+    if num == 0 or num == 1:
+        return 1
+    else:
+        return fact(num-1) * num
+
+def isPalindrome(num):
+    arr = list(str(num))
+    if str(num) == "".join(arr[::-1]):
+        return True
+    else:
+        return False
+    
