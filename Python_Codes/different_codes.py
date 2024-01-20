@@ -227,3 +227,168 @@ def isPalindrome(num):
     else:
         return False
     
+def reverse_words(sentence):
+    arr = sentence.split(" ")
+    return " ".join(arr[::-1])
+
+def lens(arr):
+    nums = [0]*len(arr)
+    for i in range(len(arr)):
+        nums[i] = len(str(arr[i]))
+    return nums
+
+def alternate(a1, a2):
+    j = 0
+    arr = [0]*(len(a1)+len(a2))
+    for i in range(len(a1)):
+        arr[j] = a1[i]
+        arr[j+1] = a2[i]
+        j += 2
+    return arr
+
+def rotate(arr):
+    arr.insert(0, arr[len(arr)-1])
+    arr.pop()
+    return arr
+
+def sort(s):
+    return "".join(sorted(s))
+
+def sum_proper_divisors(n):
+    count = 0
+    for i in range(1, int(n/2)+1):
+        if n%i == 0:
+            count += i
+    return count
+
+
+#***
+def occurMax(a):
+    max_count = 0
+    max_value = None
+    for i in a:
+        count = 0
+        for j in a:
+            if i == j:
+                count += 1
+        if count > max_count:
+            max_count = count
+            max_value = i
+    return max_value
+
+
+#***
+def longestCommonPrefix(a):
+    if not a:
+        return ""
+
+    önek = a[0]
+    for s in a[1:]: 
+        i = 0
+        while i < len(önek) and i < len(s) and önek[i] == s[i]:  
+            i += 1
+        önek = önek[:i]  
+    return önek
+
+
+#***
+def whatToBuy(prices, quantities, price_restriction, construction_names):
+    items_removed = 0
+    affordable_names = []
+
+    for price, quantity, name in zip(prices, quantities, construction_names):
+        total_price = (quantity * price) / (sum(quantities) / len(quantities) * sum(prices) / len(prices))
+        if total_price <= price_restriction:
+            affordable_names.append(name)
+        else:
+            items_removed += 1
+
+    return [sorted(affordable_names), items_removed]
+    
+def seconds_to_minutes_seconds(s):
+    if s == 0:
+        return f"00:00:00"
+    if s >= 60:
+        minute = int(s/60)
+        if minute >= 60:
+            hour = int(minute/60)
+            if hour < 10 and minute%60 < 10 and s%60 < 10:
+                return f"0{hour}:0{minute%60}:0{s%60}"
+            elif hour < 10 and minute%60 < 10:
+                return f"0{hour}:0{minute%60}:{s%60}"
+            elif hour < 10:
+                return f"0{hour}:{minute%60}:{s%60}"
+            elif minute%60 < 10:
+                return f"{hour}:0{minute%60}:{s%60}"
+            elif s%60 < 10:
+                return f"{hour}:{minute%60}:0{s%60}"
+            elif hour < 10 and s%60 < 60:
+                return f"0{hour}:{minute%60}:0{s%60}"
+            elif minute%60 < 10 and s%60 < 60:
+                return f"{hour}:0{minute%60}:0{s%60}"
+            return f"{hour}:{minute%60}:{s%60}"
+        else:
+            if minute%60 < 10 and s%60 < 60:
+                return f"00:0{minute}:0{s%60}"
+            elif minute%60 < 10:
+                return f"00:0{minute}:{s%60}"
+            elif s%60 < 60:
+                return f"00:{minute}:0{s%60}"
+            return f"00:{minute}:{s%60}"
+    else:
+        return f"00:00:{s}"
+    
+def find_missing_number(arr):
+    numbers = [0,1,2,3,4,5,6,7,8,9]
+    for num in numbers:
+        if num not in arr:
+            return num
+        
+def calc(operator = None, num1 = None, num2 = None):
+    if operator == None and num1 == None and num2 == None:
+        return "Please entry value"
+    elif num2 == None:
+        if type(num1) != int and type(num1) != float:
+            return f'Invalid number "{num1}"'
+        if operator == "+" or operator == "add":
+            return num1
+        elif operator == "-" or operator == "sub":
+            return -num1
+        else:
+            return f'Invalid operator "{operator}"'
+    else:
+        if type(num1) != int and type(num1) != float:
+            return f'Invalid number "{num1}"'
+        if type(num2) != int and type(num2) != float:
+            return f'Invalid number "{num2}"'
+        if operator == "add" or operator == "+":
+            return num1 + num2
+        elif operator == "sub" or operator == "-":
+            return num1 - num2
+        elif operator == "div":
+            if num2 == 0:
+                return "Division by zero"
+            return num1 / num2
+        elif operator == "mul":
+            return num1 * num2
+        elif operator == "pow":
+            return num1 ** num2
+        elif operator == "mod":
+            if num2 == 0:
+                return "Division by zero"
+            return num1 % num2
+        else:
+            return f"Invalid operator {operator}"
+        
+def decimal_to_binary(num):
+    if num == 0:
+        return 0
+    dec = ""
+    while num > 0:
+        dec = str(num%2) + dec 
+        num //= 2
+    return dec
+    
+def nth_catalan_number(n):
+    return int((1/(n + 1)) * (fact(2*n) / (fact(n) ** 2)))
+
