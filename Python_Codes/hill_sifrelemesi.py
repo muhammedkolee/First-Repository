@@ -28,7 +28,44 @@ ilkAlfabe = {
     "V": 26,
     "Y": 27,
     "Z": 28,
-    " ": 29
+    " ": 29,
+    ".": 30,
+    ",": 31,
+    "?": 32,
+    "!": 33,
+    "+": 34,
+    "-": 35,
+    "*": 36,
+    "/": 37,
+    "a": 38,
+    "b": 39,
+    "c": 40,
+    "ç": 41,
+    "d": 42,
+    "e": 43,
+    "f": 44,
+    "g": 45,
+    "ğ": 46,
+    "h": 47,
+    "ı": 48,
+    "i": 49,
+    "j": 50,
+    "k": 51,
+    "l": 52,
+    "m": 53,
+    "n": 54,
+    "o": 55,
+    "ö": 56,
+    "p": 57,
+    "r": 58,
+    "s": 59,
+    "ş": 60,
+    "t": 61,
+    "u": 62,
+    "ü": 63,
+    "v": 64,
+    "y": 65,
+    "z": 66
 }
 sonAlfabe = {
     0: "A",
@@ -60,7 +97,44 @@ sonAlfabe = {
     26: "V",
     27: "Y",
     28: "Z",
-    29: " "
+    29: " ",
+    30: ".",
+    31: ",",
+    32: "?",
+    33: "!",
+    34: "+",
+    35: "-",
+    36: "*",
+    37: "/",
+    38: "a",
+    39: "b",
+    40: "c",
+    41: "ç",
+    42: "d",
+    43: "e",
+    44: "f",
+    45: "g",
+    46: "ğ",
+    47: "h",
+    48: "ı",
+    49: "i",
+    50: "j",
+    51: "k",
+    52: "l",
+    53: "m",
+    54: "n",
+    55: "o",
+    56: "ö",
+    57: "p",
+    58: "r",
+    59: "s",
+    60: "ş",
+    61: "t",
+    62: "u",
+    63: "ü",
+    64: "v",
+    65: "y",
+    66: "z"
 }
 
 matris = [
@@ -69,20 +143,21 @@ matris = [
 ]
 
 tersmatris = [
-    [7, 3],
-    [28, 19]
+    [11, 49],
+    [19, 6]
 ]
-
+ 
 def mul(arr1, arr2):
     new = [0]*2
-    new[0] = (arr1[0]*arr2[0][0] + arr1[1]*arr2[1][0])%30
-    new[1] = (arr1[0]*arr2[0][1] + arr1[1]*arr2[1][1])%30
+    new[0] = (arr1[0]*arr2[0][0] + arr1[1]*arr2[1][0])%67
+    new[1] = (arr1[0]*arr2[0][1] + arr1[1]*arr2[1][1])%67
     new[0] = sonAlfabe.get(new[0])
     new[1] = sonAlfabe.get(new[1])
     return new
 def sifrele(string):
+    if len(string)%2 != 0:
+        string += ' '
     result = []
-    string = string.upper()
     arr = list(string)
     dizi = [0]*2
     for i in range(0, len(arr)-1, 2):
@@ -104,4 +179,13 @@ def sifreyiCöz(string):
         result.append(deger[1])
     return "".join(result)
 
-print(f"Şifrelenmiş mesaj: {sifrele('bugün seni eskisinden daha çok özledim')}\nAsıl mesaj: {sifreyiCöz(sifrele('bugün seni eskisinden daha çok özledim'))}")
+print(f"Şifrelenmiş mesaj:")
+print(sifrele("Ne hasta bekler sabahı,"))
+print(sifrele("Ne taze ölüyü mezar."))
+print(sifrele("Ne de şeytan, bir günahı,"))
+print(sifrele("Seni beklediğim kadar."))
+print("\nAsıl mesaj:")
+print(sifreyiCöz(sifrele("Ne hasta bekler sabahı,")))
+print(sifreyiCöz(sifrele("Ne taze ölüyü mezar.")))
+print(sifreyiCöz(sifrele("Ne de şeytan, bir günahı,")))
+print(sifreyiCöz(sifrele("Seni beklediğim kadar.")))
