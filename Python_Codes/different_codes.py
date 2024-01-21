@@ -392,3 +392,7 @@ def decimal_to_binary(num):
 def nth_catalan_number(n):
     return int((1/(n + 1)) * (fact(2*n) / (fact(n) ** 2)))
 
+def count_trees(forest):
+    trees = "".join(forest)
+    return trees.count("#")
+
