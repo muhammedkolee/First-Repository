@@ -1,4 +1,5 @@
 import turtle
+import re
 
 def maskify(cc):
     liste = list(str(cc))
@@ -396,3 +397,10 @@ def count_trees(forest):
     trees = "".join(forest)
     return trees.count("#")
 
+def is_palindrome(s):
+    arr = list(s)
+    if arr == arr[::-1]:
+        return True
+    else:
+        return False
+    
