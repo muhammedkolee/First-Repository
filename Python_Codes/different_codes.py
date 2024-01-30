@@ -1,5 +1,4 @@
 import turtle
-import re
 
 def maskify(cc):
     liste = list(str(cc))
@@ -393,14 +392,34 @@ def decimal_to_binary(num):
 def nth_catalan_number(n):
     return int((1/(n + 1)) * (fact(2*n) / (fact(n) ** 2)))
 
-def count_trees(forest):
-    trees = "".join(forest)
-    return trees.count("#")
+def is_omnipresent(a, n):
+    for i in a:
+        if n in i:
+            continue
+        else:
+            return False
+    return True
 
-def is_palindrome(s):
-    arr = list(s)
-    if arr == arr[::-1]:
-        return True
-    else:
-        return False
-    
+def levenshtein_distance(s1, s2):
+    arr1 = list(s1)
+    arr2 = list(s2)
+    if len(arr1) == len(arr2):
+        count = 0
+        for i in range(len(arr2)):
+            if arr1[i] == arr2[i]:
+                count += 1
+        return len(arr1)-count
+    count = 0
+    for i in range(len(arr1)-1):
+        if arr1[i] == arr2[i]:
+            count += 1
+            continue
+        elif arr1[i] == arr2[i+1]:
+            count += 1
+            continue
+        if len(arr2) != i+2:
+            if arr1[i] == arr2[i+2]:
+                count += 1
+                continue
+    return len(arr2) - count
+
