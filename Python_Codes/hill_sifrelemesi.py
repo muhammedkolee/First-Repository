@@ -146,14 +146,15 @@ tersmatris = [
     [11, 49],
     [19, 6]
 ]
- 
+
 def mul(arr1, arr2):
     new = [0]*2
     new[0] = (arr1[0]*arr2[0][0] + arr1[1]*arr2[1][0])%67
     new[1] = (arr1[0]*arr2[0][1] + arr1[1]*arr2[1][1])%67
-    new[0] = sonAlfabe.get(new[0])
-    new[1] = sonAlfabe.get(new[1])
+    new[0] = sonAlfabe[new[0]]
+    new[1] = sonAlfabe[new[1]]
     return new
+
 def sifrele(string):
     if len(string)%2 != 0:
         string += ' '
@@ -161,19 +162,20 @@ def sifrele(string):
     arr = list(string)
     dizi = [0]*2
     for i in range(0, len(arr)-1, 2):
-        dizi[0] = ilkAlfabe.get(arr[i])
-        dizi[1] = ilkAlfabe.get(arr[i+1])
+        dizi[0] = ilkAlfabe[arr[i]]
+        dizi[1] = ilkAlfabe[arr[i+1]]
         deger = mul(dizi, matris)
         result.append(deger[0])
         result.append(deger[1])
     return "".join(result)
+
 def sifreyiCöz(string):
     result = []
     arr = list(string)
     dizi = [0]*2
     for i in range(0, len(string)-1, 2):
-        dizi[0] = ilkAlfabe.get(arr[i])
-        dizi[1] = ilkAlfabe.get(arr[i+1])
+        dizi[0] = ilkAlfabe[arr[i]]
+        dizi[1] = ilkAlfabe[arr[i+1]]
         deger = mul(dizi, tersmatris)
         result.append(deger[0])
         result.append(deger[1])
