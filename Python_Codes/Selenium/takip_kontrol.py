@@ -13,10 +13,11 @@ def scrollDown():
     sayfaSonu = driver.execute_script(jsKomut)
     while True:
         son = sayfaSonu
-        time.sleep(1)
+        time.sleep(2)
         sayfaSonu = driver.execute_script(jsKomut)
         if son == sayfaSonu:
             break
+  
 
 def login():
     driver.get("http://instagram.com")
