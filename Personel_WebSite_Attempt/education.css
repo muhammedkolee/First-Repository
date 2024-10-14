@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: black;
+    padding: 20px;
+}
+
+header h1 a {
+    margin-left: auto;
+    font-style: italic;
+    color: white;
+    text-decoration: none;
+}
+
+header p {
+    margin-left: auto;
+    color: white;
+    margin-top: 10px;
+}
+
+section {
+    background-color: gray;
+    padding: 120px;
+    align-items: start;
+    display: flex;
+}
+
+#schools {
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+    width: 100%;
+}
+
+#ilkolul {
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    width: 200px;
+    height: 100px;
+    border-radius: 15px;
+    box-sizing: border-box;
+    cursor: pointer;
+    background-color: darkgray;
+}
+
+#ortaokul {
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    width: 200px;
+    height: 100px;
+    border-radius: 15px;
+    box-sizing: border-box;
+    cursor: pointer;
+    background-color: darkkhaki; 
+}
+
+#lise {
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    width: 200px;
+    height: 100px;
+    border-radius: 15px;
+    box-sizing: border-box;
+    cursor: pointer;
+    background-color: darkolivegreen;
+}
+
+#uni {
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    width: 200px;
+    height: 100px;
+    border-radius: 15px;
+    box-sizing: border-box;
+    cursor: pointer;
+    background-color: darksalmon;
+}
+
+#year {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+
+footer {
+    background-color: darkcyan;
+    padding: 20px 0;
+    text-align: center;
+    height: 80px;
+}
+
+#socials {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+#socials a {
+    display: contents;
+}
+
+#socials img {
+    width: 40px;  
+    height: 40px;
+    border-radius: 10px;
+}
+
+footer a {
+    text-decoration: none;
+}
