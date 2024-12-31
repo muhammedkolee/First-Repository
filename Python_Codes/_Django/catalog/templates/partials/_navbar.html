@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'index' %}">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item {% if request.path == '/'%} active bg-primary {%endif%}">
+          <a class="nav-link" aria-current="page" href="{% url 'index' %}">Home</a>
+        </li>
+
+        <li class="nav-item {% if 'about' in request.path %} active bg-primary {%endif%}">
+          <a class="nav-link" href="{% url 'about' %}">About</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'movies' %}">Movies</a></li>
+            <li><a class="dropdown-item" href="{% url 'search' %}">Search 123</a></li>
+            <li><a class="dropdown-item" href="#">Detail</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="navbar-nav px-2">
+
+        {% if user.is_authenticated %}
+
+        <li class="nav-item active bg-danger rounded-pill mx-1">
+          <a class="nav-link" href="javascript:{document.getElementById('logout').submit()}">({{user.username}}) Log out</a>
+          <form action="{% url 'logout' %}" method="post" id="logout">{% csrf_token %} <input type="hidden"></form>
+        </li>
+
+        {% else %}
+
+        <li class="nav-item active bg-success rounded-pill mx-1">
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+        </li>
+
+        <li class="nav-item active bg-warning rounded-pill mx-1">
+          <a class="nav-link" href="{% url 'register' %}">Register</a>
+        </li>
+
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>

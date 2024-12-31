@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Movies </h1>
+
+
+{% if movies %}
+    {% for movie in movies %}
+<div class="card mb-3">
+    <div class="row">
+        <div class="md-3">
+            <img class="card-img" src="{% static movie.get_image_path %}" alt="Resim bulunamadı.">
+        </div>
+        <div class="col-md-9">
+            <div class="card-body">
+                <div class="card-title">
+                    <a href="{% url 'detail' movie.id %}">{{ movie.name }}</a>
+                </div>
+                <p class="card-text">{{ movie.description }}</p>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+{% else %}
+    <p class="alert alert-warning" >There are no movies available.</p>
+{% endif %}
+
+</div>
+{% endblock %}
