@@ -25,15 +25,17 @@ def login():
     time.sleep(1)
 
     kullanici = driver.find_element(by="xpath", value='//*[@id="loginForm"]/div/div[1]/div/label/input').send_keys(username)
-    parola = driver.find_element(by="xpath", value="/html/body/div[2]/div/div/div[2]/div/div/div[1]/section/main/article/div[2]/div[1]/div[2]/form/div/div[2]/div/label/input").send_keys(password)
-    giris = driver.find_element(by="xpath", value="/html/body/div[2]/div/div/div[2]/div/div/div[1]/section/main/article/div[2]/div[1]/div[2]/form/div/div[3]/button").click()
-    time.sleep(5)
+    parola = driver.find_element(by="xpath", value='//*[@id="loginForm"]/div[1]/div[2]/div/label/input').send_keys(password)
+    giris = driver.find_element(by="xpath", value='//*[@id="loginForm"]/div[1]/div[3]/button').click()
+    time.sleep(10)
 
 def control():
     def following():
-        driver.get(f"https://www.instagram.com/{username}/following")
+        driver.get(f"https://www.instagram.com/{username}")
         time.sleep(3)
-
+        driver.find_element(by="xpath", value='//*[@id="mount_0_0_Dq"]/div/div/div[2]/div/div/div[1]/div[2]/div/div[1]/section/main/div/header/section[3]/ul/li[3]/div/a').click()
+        time.sleep(3)
+        
         dialog = driver.find_element(by="css selector", value="div[role=dialog]")
         scrollDown()
         takipciler = dialog.find_elements(by="class name", value="x1dm5mii")
