@@ -423,3 +423,11 @@ def levenshtein_distance(s1, s2):
                 continue
     return len(arr2) - count
 
+def euclidAlgorithm(num1, num2):
+    if num1 > num2:
+        return euclidAlgorithm(num2, num1)
+    
+    while num2 != 0:
+        num1, num2 = num2, num1 % num2
+    return num1
+

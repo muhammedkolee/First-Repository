@@ -1,7 +1,7 @@
 import os
 import time
 
-file_path = "file_name.png"
+file_path = "photo.jpg"
 
 created_time = time.ctime(os.path.getctime(file_path))
 modified_time = time.ctime(os.path.getmtime(file_path))
